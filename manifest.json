@@ -1,0 +1,75 @@
+{
+	"manifest_version": 2,
+	"name": "Edge TTS 4 All",
+	"version": "0.1",
+	"description": "A recreation of Microsoft Edge's TTS in other browers.",
+	"permissions": [
+		"storage",
+		"contextMenus",
+		"theme",
+		"activeTab",
+		"<all_urls>",
+		"webRequest",
+		"webRequestBlocking",
+		"https://speech.platform.bing.com/",
+		"wss://speech.platform.bing.com/"
+	],
+	"web_accessible_resources": [
+		"edgeTTS.js",
+		"audio.mp3",
+		"popup.html"
+	],
+	"browser_action": {
+		"default_popup": "popup.html"
+	},
+	"options_ui": {
+		"page": "options.html",
+		"open_in_tab": true
+	},
+	"background": {
+		"scripts": [
+			"edgeTTS.js",
+			"background.js"
+		]
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"*://*/*"
+			],
+			"js": [
+				"Readability.js",
+				"content.js"
+			],
+			"run_at": "document_idle"
+		}
+	],
+	"commands": {
+		"toggle-play-pause": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+U",
+				"mac": "Command+Shift+U"
+			},
+			"description": "Start, Play, or Pause Read Aloud"
+		},
+		"previous-block": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+Left",
+				"mac": "Command+Shift+Left"
+			},
+			"description": "Read the previous paragraph/sentence"
+		},
+		"next-block": {
+			"suggested_key": {
+				"default": "Ctrl+Shift+Right",
+				"mac": "Command+Shift+Right"
+			},
+			"description": "Read the next paragraph/sentence"
+		}
+	},
+	"browser_specific_settings": {
+		"gecko": {
+			"id": "edgetts4all@example.com"
+		}
+	}
+}
