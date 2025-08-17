@@ -44,14 +44,4 @@ A proof of concept browser extension attempting to port Edge's Text-To-Speech, a
 6. In Nightly, open Add-ons Manager (Menu → Add-ons).
 7. Click gear icon → Install Add-on From File.... Select your `.xpi`. Confirm installation.
 
-## Available Settings
-
-- **Voice**: Dropdown of available voices from Edge
-- **Speed**: Make it read faster or slower
-- **Pitch**: Adjust how high or low the voice sounds
-- **Reading Mode**: Read paragraph-by-paragraph or sentence-by-sentence
-- **Highlighting**: Change colors and transparency of both highlighted words and sentences.
-
-
-
 ## Found a bug? [Report it here](https://github.com/TiredOfEverything/Edge-TTS-4-All/issues)
