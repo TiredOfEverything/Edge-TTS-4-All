@@ -10,14 +10,13 @@ const Constants = {
 // ---------- GEC Hash Generator ----------
 async function generateSecMsGec(trustedClientToken) {
 	const WIN_EPOCH = 11644473600n; // Windows epoch offset (1601 → 1970)
-	const INTERVAL = 300n;           // Round to nearest 5 minutes
+	const INTERVAL = 600n;           // Round to nearest 5 minutes
 
 	const unixTime = BigInt(Math.floor(Date.now() / 1000)); // seconds since 1970
 	let fileTimeSec = unixTime + WIN_EPOCH;
 
 	fileTimeSec -= fileTimeSec % INTERVAL;
-
-	const ticks = (fileTimeSec * 10000000n) / 100n;
+	const ticks = fileTimeSec * 10000000n;     // 100-ns FILETIME ticks
 
 	const hashInput = ticks.toString() + trustedClientToken;
 	const data = new TextEncoder().encode(hashInput);
@@ -88,7 +87,7 @@ class EdgeTTS {
 	}
 
 	buildTTSConfigMessage() {
-		return `X-Timestamp:${new Date().toISOString()}Z\r\nContent-Type:application/json; charset=utf-8\r\nPath:speech.config\r\n\r\n` +
+		return `X-Timestamp:${new Date().toISOString()}\r\nContent-Type:application/json; charset=utf-8\r\nPath:speech.config\r\n\r\n` +
 			`{"context":{"synthesis":{"audio":{"metadataoptions":{"sentenceBoundaryEnabled":false,"wordBoundaryEnabled":true},"outputFormat":"audio-24khz-48kbitrate-mono-mp3"}}}}`;
 	}
 
