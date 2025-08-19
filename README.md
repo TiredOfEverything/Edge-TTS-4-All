@@ -1,6 +1,6 @@
 # Edge Text-To-Speech For All
 
-A proof of concept browser extension attempting to port Edge's Text-To-Speech, as well as Edge's on-page word & sentence highlighting, and automatic page navigation into different browsers.
+A proof of concept browser extension attempting to port Edge's Text-To-Speech, as well as Edge's on-page word & sentence highlighting, and automatic page navigation into different browsers. The core of the code came from the ['Edge TTS' repository by Andresayac.](https://github.com/andresayac/edge-tts/)
 
 ![Extension Status](https://img.shields.io/badge/status-active%20development-green)
 ![Firefox Nightly](https://img.shields.io/badge/Firefox_Nightly-compatible-orange)
